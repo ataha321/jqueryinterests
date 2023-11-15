@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Soccer Players</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #34495e; 
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #playersButtons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .playerButton {
+            font-size: 16px;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #2ecc71; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #playerInfo {
+            text-align: center;
+        }
+
+        #playerImage {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="playersButtons">
+        <button class="playerButton" data-player="ronaldo">Cristiano Ronaldo</button>
+        <button class="playerButton" data-player="messi">Messi</button>
+        <button class="playerButton" data-player="zidane">Zinedine Zidane</button>
+        <button class="playerButton" data-player="ronaldo-lima">Ronaldo Lima</button>
+        <button class="playerButton" data-player="ronaldinho">Ronaldinho</button>
+    </div>
+
+    <div id="playerInfo">
+        <h2 style="color: #2ecc71;">Explore Famous Soccer Players</h2>
+        <p>Select a player to learn more!</p>
+        <img id="playerImage" src="ronaldo.jpg" alt="Player Image">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const playersData = {
+                ronaldo: {
+                    description: "Cristiano Ronaldo is a Portuguese professional soccer player widely considered one of the greatest footballers of all time. Known for his goal-scoring prowess and versatility.",
+                    image: "ronaldo.jpg"
+                },
+                messi: {
+                    description: "Lionel Messi is an Argentine professional soccer player, often regarded as one of the greatest players in the history of football. Known for his dribbling skills and goal-scoring ability.",
+                    image: "messi.jpg"
+                },
+                zidane: {
+                    description: "Zinedine Zidane is a retired French footballer and a legendary figure in soccer history. Known for his elegance on the ball and pivotal role in the French national team's success.",
+                    image: "zidane.jpg"
+                },
+                'ronaldo-lima': {
+                    description: "Ronaldo Luís Nazário de Lima, commonly known as Ronaldo, is a retired Brazilian striker and one of the greatest goal-scorers in the history of football. Known for his speed and skill.",
+                    image: "ronaldo-lima.jpg"
+                },
+                ronaldinho: {
+                    description: "Ronaldinho is a retired Brazilian footballer known for his flair, skill, and creativity on the field. He played for top clubs and won numerous individual awards during his career.",
+                    image: "ronaldinho.jpg"
+                }
+            };
+
+            $(".playerButton").on("click mouseover", function () {
+                const player = $(this).data("player");
+                const playerData = playersData[player];
+
+                $("#playerInfo")
+                    .html(`<h2 style="color: #2ecc71;">${$(this).text()}</h2><p>${playerData.description}</p><img id="playerImage" src="${playerData.image}" alt="Player Image">`);
+            });
+        });
+    </script>
+</body>
+</html>
